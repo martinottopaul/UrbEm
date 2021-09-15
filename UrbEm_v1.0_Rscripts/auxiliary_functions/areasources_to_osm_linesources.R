@@ -27,7 +27,7 @@ area_to_osm_lines <- function(domain, area_emissions)
   osm <- osm$osm_lines[, c("highway")]
   
   ### show me what osm data is left
-  plot(osm, axes =T)
+  #plot(osm, axes =T)
   
   ### transform back to UTM projection and crop it to the correct domain exten
   osm <- st_transform(osm, crs = crs(domain))
@@ -38,12 +38,15 @@ area_to_osm_lines <- function(domain, area_emissions)
   options(warn=-1)
   remove(out)
   print("distributing area emissions: each grid cell value is attributed to road elements that fall into a grid cell")
+  
+  # initiate progress bar
+  progress = txtProgressBar(min = 0, max = length(domain_sf$geometry), initial = 0, style = 3) 
+  
   for(i in 1:length(domain_sf$geometry))
   {
     
     #algorithm based on VEIN package's "emis_dist" function by S. Ibara
     #modified by M. Ramacher
-    print(paste0(as.integer(i/length(domain_sf$geometry)*100)," % done"))
     
     ### gather all roads, which are in cell i from emissions raster
     osm_cell <- st_intersection(osm,domain_sf$geometry[i])
@@ -150,7 +153,7 @@ area_to_osm_lines <- function(domain, area_emissions)
       ### give correct names
       names(osm_cell_all) <- c("NOx", "NMVOC", "CO", "SO2", "NH3", "PM25", "PM10", "roadtype", "geometry")
       
-      plot(osm_cell_all["NOx"])
+      #plot(osm_cell_all["NOx"])
       #print(sum(osm_cell_all$NOx))
       
       if(!exists("out"))
@@ -160,6 +163,7 @@ area_to_osm_lines <- function(domain, area_emissions)
         out <- rbind(out, osm_cell_all)
       }
     }
+    setTxtProgressBar(progress,i)
   }
   options(warn=0)
   return(out)
