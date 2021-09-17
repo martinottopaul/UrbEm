@@ -66,3 +66,32 @@ The input section of each main script, as well as the code itself delivers a doc
 
 Feel free to adjust the code for your purposes.
 
+2.2. UrbEm Python scripts
+
+The UrbEm v1.0 Python scripts are separated in two main scripts: 
+•	1_UrbEM_proxies_v1.py 
+•	2_UrbEM_emissions_v1.py
+
+These scripts need to be run sequentially to 1. create proxy, point, area and line emission files.
+
+Before running the scripts, make sure the python libraries pandas, numpy, gdal, geopandas, os, sys, fnmatch, inspect, rasterio, rasterio.mask, earthpy.spatial, shapely.geometry, earthpy, fiona, osgeo, gc, geotable, pyproj, shapely, time, shutil, OSMPythonTools.nominatim, OSMPythonTools.overpass, OSMPythonTools.data, collections and shapefile are installed in your Python v3 environment.
+
+Spatial datasets: In order to be able to run the python scripts the user should also download:
+•	Population density data (Global dataset/ 2015 / WGS84 / 30 arcsec): https://ghsl.jrc.ec.europa.eu/download.php?ds=pop 
+•	CORINE raster and GDB files: https://land.copernicus.eu/pan-european/corine-land-cover/clc2018 
+•	E-PRTR kmz data: 
+https://www.eea.europa.eu/data-and-maps/data/member-states-reporting-art-7-under-the-european-pollutant-release-and-transfer-register-e-prtr-regulation-23/e-prtr-facilities-kmz-format/eprtr_facilities_v9.kmz 
+•	E-PRTR csv data: 
+https://www.eea.europa.eu/data-and-maps/data/member-states-reporting-art-7-under-the-european-pollutant-release-and-transfer-register-e-prtr-regulation-23/european-pollutant-release-and-transfer-register-e-prtr-data-base/eprtr_v9_csv.zip 
+•	Urban Center data: https://ghsl.jrc.ec.europa.eu/ghs_stat_ucdb2015mt_r2019a.php 
+•	Eurostat countries: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/countries 
+•	Shipping Routes
+
+Each of the main scripts has an input section at the beginning, which needs to be adjusted, for e.g.:
+•	setting input folders of emission files and proxies
+•	setting a domain definition
+•	setting downscaling options
+
+The input section of each script, as well as the code itself delivers a documentation of each step made in the script.
+
+Feel free to adjust the code for your purposes.
