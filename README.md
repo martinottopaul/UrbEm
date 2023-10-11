@@ -1,4 +1,4 @@
-# UrbEm v1.0
+# UrbEm v1.0.0
 The Urban Emission downscaling model (UrbEm)for air quality modeling
 
 0. Introduction
